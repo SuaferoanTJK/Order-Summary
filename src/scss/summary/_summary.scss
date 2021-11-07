@@ -1,0 +1,113 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+body{
+    @include m.bg("../img/pattern-background-mobile.svg");
+    @include m.tablet{
+        @include m.bg("../img/pattern-background-desktop.svg");    
+    }
+}
+.card{
+    max-width: 35rem;
+    margin: 10rem auto;
+    box-shadow: 0 4rem 8rem v.$paleBlue;
+    @include m.tablet{
+        max-width: 42rem;
+        margin: 15rem auto;
+    }
+    &__image{
+        width: 100%;
+        overflow: hidden;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+    }
+    &__info{
+        background-color: v.$white; 
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        padding: 2rem 4rem;
+        text-align: center;
+    }
+    &__heading{
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: v.$darkBlue;
+    }
+    &__description{
+        color: v.$desaturatedBlue;
+        font-weight: 500;
+    }
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        align-items: center;
+        padding: 1rem 0;
+        margin: 2.5rem 0;
+        background-color: v.$veryPaleBlue;
+        border-radius: 1.5rem;
+        position: relative;
+    }
+    &__text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 4rem;
+        &::before{
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 5rem;
+            height: 5rem;
+            background-image: url("../img/icon-music.svg");
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            left: .5rem;
+        }
+        &:nth-child(1){
+            grid-column: 1/3;
+        }
+        &:nth-child(2){
+            grid-column: 3/4;
+        }
+    }
+    &__plan,
+    &__price{
+        margin: 0;        
+    }
+    &__plan{
+        font-weight: 900;
+        color: lighten(v.$darkBlue,5%);   
+    }
+    &__option{
+        text-align: right;
+        padding-right: 2rem;
+    }
+    &__link{
+        &:hover{
+            text-decoration: none;
+            color: lighten(v.$brightBlue,10%);
+        }
+    }
+    &__btn{
+        display: block;
+        background-color: v.$brightBlue;
+        color: v.$white;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        text-decoration: none;
+        box-shadow: 0 2rem 8rem lighten(v.$darkBlue,65%);
+        &:hover{
+            background-color: lighten(v.$brightBlue,10%);
+        }
+    }
+    &__btn-cancel{
+        padding: 3.5rem 0 2rem 0;
+        display: block;
+        color: v.$desaturatedBlue;
+        text-decoration: none;
+        &:hover{
+            color: v.$darkBlue;
+        }
+    }
+}
